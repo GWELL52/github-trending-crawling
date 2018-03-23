@@ -62,21 +62,14 @@ def job():
     date = datetime.datetime.now()
     strdate = date.strftime('%Y-%m-%d')
 
-    # path = os.getcwd()
-    # folder = '{path}/{year}/'.format(path=path, year=date.year)
-    # if not os.path.exists(folder):
-    #     os.makedirs(folder)
-    # filename = '{folder}{date}.md'.format(folder=folder, date=strdate)
-    # filename = '{path}/{date}.md'.format(path=path, date=strdate)
-    # os.chdir(path)
-
     path = os.path.dirname(__file__)
-    folder = '{path}/{year}/'.format(path=path, year=date.year)
+    os.chdir(path)
+
+    folder = '{year}'.format(year=date.year)
     if not os.path.exists(folder):
          os.makedirs(folder)
 
-    os.chdir(folder)
-    filename = '{date}.md'.format(date=strdate)
+    filename = '{folder}/{date}.md'.format(folder=folder, date=strdate)
 
     # create markdown file
     createMarkdown(strdate, filename)
