@@ -63,11 +63,12 @@ def job():
     strdate = date.strftime('%Y-%m-%d')
 
     path = os.path.dirname(__file__)
-    os.chdir(path)
 
     folder = '{year}'.format(year=date.year)
     if not os.path.exists(folder):
          os.makedirs(folder)
+
+    os.chdir(path)
 
     filename = '{folder}/{date}.md'.format(folder=folder, date=strdate)
 
